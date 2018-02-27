@@ -44,11 +44,13 @@ public class TelaLoginController {
 			user.setNome(rs.getString(2));
 			
 			
-			Parent parent = FXMLLoader.load(getClass().getResource("../view/TelaPrincipal.fxml")); 
-			Scene cenaTelaPrincipal = new Scene(parent, 450, 500);
+			Parent parent = FXMLLoader.load(getClass().getResource("../view/QuadroPrincipal.fxml")); 
+			Scene cenaTelaPrincipal = new Scene(parent, 600, 400);
 			Stage stagePrincipal = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stagePrincipal.setScene(cenaTelaPrincipal);
-			stagePrincipal.setResizable(false);
+			stagePrincipal.setResizable(true);
+			stagePrincipal.setMinHeight(400);
+			stagePrincipal.setMinWidth(630);
 			stagePrincipal.show();
 		}
 		rs.close();
