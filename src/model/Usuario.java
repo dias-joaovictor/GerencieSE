@@ -5,6 +5,7 @@ public class Usuario {
 	private String nome;
 	private String senha;
 	private int id;
+	private Grupo idGrupo;
 	public String getNome() {
 		return nome;
 	}
@@ -23,6 +24,5 @@ public class Usuario {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 	
 }
