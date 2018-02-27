@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="controller.TelaPrincipalController">
+   <children>
+      <Button fx:id="botao_principal_produtos" layoutX="155.0" layoutY="121.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Produtos" />
+      <Button fx:id="botao_principal_fornecedores" layoutX="155.0" layoutY="181.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Fornecedores" />
+      <Button fx:id="botao_principal_clientes" layoutX="155.0" layoutY="241.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Clientes" />
+      <Button fx:id="botao_principal_usuarios" layoutX="155.0" layoutY="301.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Usuários" />
+      <Label fx:id="label_principal_saudacao" layoutX="264.0" layoutY="24.0" prefHeight="17.0" prefWidth="161.0" />
+      <Button fx:id="botao_principal_logout" layoutX="363.0" layoutY="435.0" mnemonicParsing="false" text="Logout" onAction="#handlerLogout" />
+   </children>
+</Pane>
