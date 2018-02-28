@@ -23,9 +23,14 @@ public class QuadroPrincipalController {
 	@FXML BorderPane borderPane;
 	@FXML Pane aaaaa;
 	
-//	public QuadroPrincipalController() throws Exception {
-//		borderPane.setCenter(FXMLLoader.load(getClass().getResource("../view/ParentInicial.fxml")));
-//	}
+	public QuadroPrincipalController() throws Exception {
+		Parent parent = FXMLLoader.load(getClass().getResource("../view/ParentInicial.fxml"));
+		principal_anchorPane.setBottomAnchor(parent, 0.0);
+		principal_anchorPane.setTopAnchor(parent, 0.0);
+		principal_anchorPane.setLeftAnchor(parent, 0.0);
+		principal_anchorPane.setRightAnchor(parent, 0.0);
+		principal_anchorPane.getChildren().add(parent);
+	}
 	
 	@FXML public void clickProduto(ActionEvent event) throws Exception {
 		Parent parent = FXMLLoader.load(getClass().getResource("../view/ParentProduto.fxml"));

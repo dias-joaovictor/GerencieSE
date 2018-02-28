@@ -9,7 +9,7 @@ public class Fornecedores {
 	private String telefone;
 	private String ramal;
 	private String email;
-	private String endereço;
+	private String endereco;
 	private String bairro;
 	private String cidade;
 	private String estado;
@@ -56,11 +56,11 @@ public class Fornecedores {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	public String getBairro() {
 		return bairro;

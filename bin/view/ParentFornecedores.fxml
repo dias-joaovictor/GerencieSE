@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="Fornecedores">
+               <items>
+                  <MenuItem fx:id="parent_fornecedores_listar" mnemonicParsing="false" text="Listar" />
+                  <MenuItem fx:id="parent_fornecedores_incluir" mnemonicParsing="false" text="Incluir" />
+                  <MenuItem fx:id="parent_fornecedores_alterar" mnemonicParsing="false" text="Alterar" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
