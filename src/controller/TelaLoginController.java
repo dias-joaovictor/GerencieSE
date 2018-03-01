@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.DataBase;
 import model.Usuario;
@@ -51,6 +52,9 @@ public class TelaLoginController {
 			stagePrincipal.setResizable(true);
 			stagePrincipal.setMinHeight(400);
 			stagePrincipal.setMinWidth(630);
+			
+			stagePrincipal.centerOnScreen(); 
+			stagePrincipal.setMaximized(true); 
 			stagePrincipal.show();
 		}
 		rs.close();
