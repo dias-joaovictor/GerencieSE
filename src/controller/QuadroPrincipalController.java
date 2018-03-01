@@ -2,7 +2,7 @@ package controller;
 
 
 
-import com.sun.deploy.config.Platform;
+//import com.sun.deploy.config.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -30,6 +30,7 @@ public class QuadroPrincipalController {
 	@FXML Label label_inicial;
 	@FXML AnchorPane central_anchorPane;
 	@FXML MenuBar principal_menuBar;
+	@FXML Menu principal_menu;
 	
 	@FXML public void initialize() throws Exception {
 		label_inicial = new Label();
@@ -49,12 +50,16 @@ public class QuadroPrincipalController {
 		ativarTodosBotoes();
 		botao_principal_produtos.setDisable(true);
 
-		Menu menuProdutos = new Menu("Produtos");
+		principal_menu = new Menu("Produtos");
 		MenuItem listarProduto = new MenuItem("Listar Produtos");
 		MenuItem gerenciarProduto = new MenuItem("Gerenciar Produtos");
-		menuProdutos.getItems().addAll(listarProduto, gerenciarProduto);
+		principal_menu.getItems().addAll(listarProduto, gerenciarProduto);
+		principal_menuBar.getMenus().add(principal_menu);
 
-		principal_menuBar.getMenus().add(menuProdutos);
+		principal_anchorPane.setLeftAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.setRightAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.setTopAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.getChildren().add(principal_menuBar);
 		
 		listarProduto.setOnAction(ActionEvent -> System.out.println("funciona"));
 		
@@ -63,23 +68,30 @@ public class QuadroPrincipalController {
 		limparTelaInicial();
 		ativarTodosBotoes();
 		botao_principal_fornecedores.setDisable(true);
-		Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedores.fxml"));
+		//Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedores.fxml"));
 
-		Menu menuFornecedor = new Menu("Fornecedor");
+		principal_menu = new Menu("Fornecedor");
 		MenuItem listaFornecedor = new MenuItem("Listar");
 		MenuItem incluirFornecedor = new MenuItem("Incluir");
 		MenuItem AlterarFornecedor = new MenuItem("Alterar");
 		
-		menuFornecedor.getItems().addAll(listaFornecedor, incluirFornecedor, AlterarFornecedor);
-		principal_menuBar.getMenus().add(menuFornecedor);
+		principal_menu.getItems().addAll(listaFornecedor, incluirFornecedor, AlterarFornecedor);
+		principal_menuBar.getMenus().add(principal_menu);
 		
-		incluirFornecedor.setOnAction(ActionEvent -> {
-			central_anchorPane.setTopAnchor(formulario, 0.0);
-			central_anchorPane.setBottomAnchor(formulario, 0.0);
-			central_anchorPane.setLeftAnchor(formulario, 0.0);
-			central_anchorPane.setRightAnchor(formulario, 0.0);
-			central_anchorPane.getChildren().add(formulario);
-		});
+		principal_anchorPane.setLeftAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.setRightAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.setTopAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.getChildren().add(principal_menuBar);
+		
+		
+		
+//		incluirFornecedor.setOnAction(ActionEvent -> {
+//			central_anchorPane.setTopAnchor(formulario, 0.0);
+//			central_anchorPane.setBottomAnchor(formulario, 0.0);
+//			central_anchorPane.setLeftAnchor(formulario, 0.0);
+//			central_anchorPane.setRightAnchor(formulario, 0.0);
+//			central_anchorPane.getChildren().add(formulario);
+//		});
 		
 		
 //		Parent menu = FXMLLoader.load(getClass().getResource("../view/ParentFornecedores.fxml"));
@@ -106,8 +118,8 @@ public class QuadroPrincipalController {
 	}
 	
 	private void limparTelaInicial() {
-		principal_anchorPane.getChildren().remove(principal_menuBar);
-		principal_anchorPane.getChildren().remove(label_inicial);
+		principal_anchorPane.getChildren().clear();
+		principal_menuBar.getMenus().clear();
 	}
 
 }
