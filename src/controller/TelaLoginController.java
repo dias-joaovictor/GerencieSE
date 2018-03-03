@@ -30,17 +30,22 @@ public class TelaLoginController {
 	@FXML private PasswordField tela_login_senha;
 	@FXML private Button tela_login_botao_enviar;
 	
+	
 	@FXML private void handlerMouseClick(Event event) throws SQLException, Exception {
 		
-		codUsuario = tela_login_usuario.getText();
-		senha = tela_login_senha.getText();
+		//codUsuario = tela_login_usuario.getText();
+		//senha = tela_login_senha.getText();
+		
+		codUsuario = "1";
+		senha = "root";
+		
 //		System.out.println("Senha: " + tela_login_senha.getText());
-//		System.out.println("Usuário: " + tela_login_usuario.getText());
+//		System.out.println("Usuï¿½rio: " + tela_login_usuario.getText());
 		
 		Connection conn = DataBase.getConnection();
 		ResultSet rs = new UsuarioDAO().autenticaUsuario(conn, codUsuario, senha);
 		if(rs.next()) {
-			System.out.println("Usuário autenticado!");
+			System.out.println("UsuÃ¡rio autenticado!");
 			Usuario user = new Usuario();
 			user.setNome(rs.getString(2));
 			
@@ -50,11 +55,13 @@ public class TelaLoginController {
 			Stage stagePrincipal = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stagePrincipal.setScene(cenaTelaPrincipal);
 			stagePrincipal.setResizable(true);
-			stagePrincipal.setMinHeight(400);
-			stagePrincipal.setMinWidth(630);
+			stagePrincipal.setMinWidth(800);
+			stagePrincipal.setMinHeight(600);
 			
 			stagePrincipal.centerOnScreen(); 
-			stagePrincipal.setMaximized(true); 
+//			stagePrincipal.setHeight(Screen.getPrimary().getVisualBounds().getHeight()); 
+//			stagePrincipal.setWidth(Screen.getPrimary().getVisualBounds().getWidth()); 
+			stagePrincipal.setMaximized(false); 
 			stagePrincipal.show();
 		}
 		rs.close();

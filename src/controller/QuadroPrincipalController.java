@@ -19,6 +19,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import view.QuadroPrincipalView;
 
 public class QuadroPrincipalController {
 
@@ -33,16 +34,14 @@ public class QuadroPrincipalController {
 	@FXML Menu principal_menu;
 	
 	@FXML public void initialize() throws Exception {
-		label_inicial = new Label();
-		label_inicial.setAlignment(Pos.CENTER);
-		label_inicial.setText("Gerencie.SE");
-		label_inicial.setRotate(45);
-		label_inicial.setFont(Font.font(100));
+		principal_anchorPane.getChildren().clear();
+		label_inicial = new QuadroPrincipalView().setLabelInicial();
 		principal_anchorPane.setBottomAnchor(label_inicial, 0.0);
 		principal_anchorPane.setTopAnchor(label_inicial, 0.0);
-		principal_anchorPane.setLeftAnchor(label_inicial, 50.0);
+		principal_anchorPane.setLeftAnchor(label_inicial, 130.0);
 		principal_anchorPane.setRightAnchor(label_inicial, 0.0);
 		principal_anchorPane.getChildren().add(label_inicial);
+		
 	}
 	
 	@FXML public void clickProduto(ActionEvent event) throws Exception {
@@ -61,6 +60,8 @@ public class QuadroPrincipalController {
 		principal_anchorPane.setTopAnchor(principal_menuBar, 0.0);
 		principal_anchorPane.getChildren().add(principal_menuBar);
 		
+
+		
 		listarProduto.setOnAction(ActionEvent -> System.out.println("funciona"));
 		
 	}
@@ -68,7 +69,7 @@ public class QuadroPrincipalController {
 		limparTelaInicial();
 		ativarTodosBotoes();
 		botao_principal_fornecedores.setDisable(true);
-		//Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedores.fxml"));
+		Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorIncluir.fxml"));
 
 		principal_menu = new Menu("Fornecedor");
 		MenuItem listaFornecedor = new MenuItem("Listar");
@@ -85,13 +86,13 @@ public class QuadroPrincipalController {
 		
 		
 		
-//		incluirFornecedor.setOnAction(ActionEvent -> {
-//			central_anchorPane.setTopAnchor(formulario, 0.0);
-//			central_anchorPane.setBottomAnchor(formulario, 0.0);
-//			central_anchorPane.setLeftAnchor(formulario, 0.0);
-//			central_anchorPane.setRightAnchor(formulario, 0.0);
-//			central_anchorPane.getChildren().add(formulario);
-//		});
+		incluirFornecedor.setOnAction(ActionEvent -> {
+			principal_anchorPane.setTopAnchor(formulario, 20.0);
+			principal_anchorPane.setBottomAnchor(formulario, 0.0);
+			principal_anchorPane.setLeftAnchor(formulario, 0.0);
+			principal_anchorPane.setRightAnchor(formulario, 0.0);
+			principal_anchorPane.getChildren().add(formulario);
+		});
 		
 		
 //		Parent menu = FXMLLoader.load(getClass().getResource("../view/ParentFornecedores.fxml"));
@@ -102,6 +103,25 @@ public class QuadroPrincipalController {
 	}
 	@FXML public void clickUsuario(ActionEvent event) {
 		limparTelaInicial();
+		ativarTodosBotoes();
+		botao_principal_usuarios.setDisable(true);
+		
+		principal_menu = new Menu("Usuários");
+		MenuItem incluirUsuario = new MenuItem("Incluir");
+		MenuItem gerenciarUsuario = new MenuItem("Gerenciar");
+		principal_menu.getItems().addAll(incluirUsuario, gerenciarUsuario);
+		
+		Menu principal_menuGrupo = new Menu("Grupos");
+		MenuItem incluirGrupo = new MenuItem("Incluir");
+		MenuItem gerenciarGrupo = new MenuItem("Gerenciar");
+		principal_menuGrupo.getItems().addAll(incluirGrupo, gerenciarGrupo);
+		
+		principal_menuBar.getMenus().addAll(principal_menu, principal_menuGrupo);
+		
+		principal_anchorPane.setLeftAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.setRightAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.setTopAnchor(principal_menuBar, 0.0);
+		principal_anchorPane.getChildren().add(principal_menuBar);
 	}
 	
 	@FXML public void clickLogout(ActionEvent event) {
@@ -114,7 +134,6 @@ public class QuadroPrincipalController {
 		botao_principal_usuarios.setDisable(false);
 		botao_principal_fornecedores.setDisable(false);
 		botao_principal_produtos.setDisable(false);
-		botao_principal_logout.setDisable(false);
 	}
 	
 	private void limparTelaInicial() {
