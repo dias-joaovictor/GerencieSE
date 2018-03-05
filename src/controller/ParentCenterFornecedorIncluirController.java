@@ -39,7 +39,7 @@ public class ParentCenterFornecedorIncluirController {
 		comboBox_fornecedor_pais.getItems().addAll("Brasil", "Outro");
 	}
 	
-	@FXML public void clickCadastrar(ActionEvent event) {
+	@FXML public void clickCadastrar(ActionEvent event) throws Exception {
 		//System.out.println(campo_fornecedor_cnpj.getText());
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setCnpj(campo_fornecedor_cnpj.getText());
@@ -53,13 +53,10 @@ public class ParentCenterFornecedorIncluirController {
 		fornecedor.setPais(comboBox_fornecedor_pais.getValue().toString());
 		fornecedor.setRepresentante(campo_fornecedor_Representante.getText());
 		fornecedor.setEmail(campo_fornecedor_email.getText());
+		Connection conn = new DataBase().getConnection();
 		
-		
-		System.out.println(fornecedor.getRazaoSocial());
-		System.out.println(fornecedor.getEstado());
-		System.out.println(fornecedor.toString());
-		System.out.println(fornecedor.getPais());
-		
+		FornecedorDAO fornecedorDAO = new FornecedorDAO();
+		fornecedorDAO.insereBanco(conn, fornecedor);
 		
 	}
 }
