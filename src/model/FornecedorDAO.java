@@ -51,7 +51,6 @@ public class FornecedorDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "'%" + textoBusca + "%'");
 			ResultSet rs = ps.executeQuery();
-			ps.close();
 			return rs;
 	}
 }

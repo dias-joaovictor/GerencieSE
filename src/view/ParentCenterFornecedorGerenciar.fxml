@@ -2,14 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane prefHeight="575.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParentCenterFornecedorGerenciarController">
+<Pane prefHeight="575.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParentCenterFornecedorGerenciarController">
    <children>
       <Label layoutX="189.0" layoutY="12.0" text="Gerenciador de Fornecedores">
          <font>
@@ -19,13 +19,18 @@
       <Label layoutX="52.0" layoutY="91.0" text="Buscar fornecedor:" />
       <TextField fx:id="campo_fornecedor_gerenciar_busca" layoutX="52.0" layoutY="115.0" prefHeight="26.0" prefWidth="497.0" />
       <Button fx:id="botao_fornecedor_gerenciar_buscar" layoutX="498.0" layoutY="148.0" mnemonicParsing="false" onAction="#clickBuscar" text="Buscar" />
-      <ScrollPane fx:id="scrollPane_fornecedor_gerenciar_scroll" layoutX="53.0" layoutY="205.0" prefHeight="341.0" prefWidth="473.0">
+      <ScrollPane fx:id="scrollPane_fornecedor_gerenciar_scroll" layoutX="53.0" layoutY="205.0" prefHeight="341.0" prefWidth="457.0">
          <content>
-            <ListView fx:id="listView_fornecedor_gerenciar_lista" prefHeight="340.0" prefWidth="458.0" />
+            <TableView fx:id="tableView_fornecedor_gerenciar_tableView" prefHeight="345.0" prefWidth="437.0">
+              <columns>
+                <TableColumn fx:id="tableColumn_fornecedor_gerenciar_razaoSocial" prefWidth="258.0" text="Razão Social" />
+                <TableColumn fx:id="tableColumn_fornecedor_gerenciar_representante" minWidth="0.0" prefWidth="178.0" text="Representante" />
+              </columns>
+            </TableView>
          </content>
       </ScrollPane>
-      <Button fx:id="botao_fornecedor_gerenciar_editar" layoutX="536.0" layoutY="362.0" mnemonicParsing="false" prefWidth="50.0" text="Editar" />
-      <Button fx:id="botao_fornecedor_gerenciar_excluir" layoutX="536.0" layoutY="407.0" mnemonicParsing="false" prefWidth="50.0" text="Excluir" />
-      <Button fx:id="botao_fornecedor_gerenciar_ver" layoutX="536.0" layoutY="500.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="50.0" text="Ver" />
+      <Button fx:id="botao_fornecedor_gerenciar_editar" layoutX="524.0" layoutY="362.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" text="Editar" />
+      <Button fx:id="botao_fornecedor_gerenciar_excluir" layoutX="524.0" layoutY="407.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" text="Excluir" />
+      <Button fx:id="botao_fornecedor_gerenciar_ver" layoutX="524.0" layoutY="500.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="62.0" text="Ver" />
    </children>
 </Pane>
