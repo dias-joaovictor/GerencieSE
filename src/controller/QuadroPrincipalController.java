@@ -2,6 +2,8 @@ package controller;
 
 
 
+import java.io.IOException;
+
 //import com.sun.deploy.config.Platform;
 
 import javafx.event.ActionEvent;
@@ -36,10 +38,10 @@ public class QuadroPrincipalController {
 	@FXML public void initialize() throws Exception {
 		principal_anchorPane.getChildren().clear();
 		label_inicial = new QuadroPrincipalView().setLabelInicial();
-		principal_anchorPane.setBottomAnchor(label_inicial, 0.0);
+		principal_anchorPane.setBottomAnchor(label_inicial, 100.0);
 		principal_anchorPane.setTopAnchor(label_inicial, 0.0);
 		principal_anchorPane.setLeftAnchor(label_inicial, 130.0);
-		principal_anchorPane.setRightAnchor(label_inicial, 0.0);
+		principal_anchorPane.setRightAnchor(label_inicial, 100.0);
 		principal_anchorPane.getChildren().add(label_inicial);
 		
 	}
@@ -69,14 +71,12 @@ public class QuadroPrincipalController {
 		limparTelaInicial();
 		ativarTodosBotoes();
 		botao_principal_fornecedores.setDisable(true);
-		Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorIncluir.fxml"));
 
 		principal_menu = new Menu("Fornecedor");
-		MenuItem listaFornecedor = new MenuItem("Listar");
-		MenuItem incluirFornecedor = new MenuItem("Incluir");
-		MenuItem AlterarFornecedor = new MenuItem("Alterar");
+		MenuItem gerenciarFornecedor = new MenuItem("Gerenciar Fornecedores");
+		MenuItem incluirFornecedor = new MenuItem("Incluir Fornecedor");
 		
-		principal_menu.getItems().addAll(listaFornecedor, incluirFornecedor, AlterarFornecedor);
+		principal_menu.getItems().addAll(gerenciarFornecedor, incluirFornecedor);
 		principal_menuBar.getMenus().add(principal_menu);
 		
 		principal_anchorPane.setLeftAnchor(principal_menuBar, 0.0);
@@ -87,11 +87,31 @@ public class QuadroPrincipalController {
 		
 		
 		incluirFornecedor.setOnAction(ActionEvent -> {
-			principal_anchorPane.setTopAnchor(formulario, 20.0);
-			principal_anchorPane.setBottomAnchor(formulario, 0.0);
-			principal_anchorPane.setLeftAnchor(formulario, 0.0);
-			principal_anchorPane.setRightAnchor(formulario, 0.0);
-			principal_anchorPane.getChildren().add(formulario);
+			try {
+				principal_anchorPane.getChildren().clear();
+				Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorIncluir.fxml"));
+				principal_anchorPane.setTopAnchor(formulario, 20.0);
+				principal_anchorPane.setBottomAnchor(formulario, 0.0);
+				principal_anchorPane.setLeftAnchor(formulario, 0.0);
+				principal_anchorPane.setRightAnchor(formulario, 0.0);
+				principal_anchorPane.getChildren().add(formulario);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+		
+		gerenciarFornecedor.setOnAction(ActionEvent -> {
+			try {
+				Parent lista = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorGerenciar.fxml"));
+				principal_anchorPane.setTopAnchor(lista, 20.0);
+				principal_anchorPane.setBottomAnchor(lista, 0.0);
+				principal_anchorPane.setLeftAnchor(lista, 0.0);
+				principal_anchorPane.setRightAnchor(lista, 0.0);
+				principal_anchorPane.getChildren().add(lista);
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		});
 		
 		
