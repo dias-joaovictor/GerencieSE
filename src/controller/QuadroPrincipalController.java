@@ -36,13 +36,13 @@ public class QuadroPrincipalController {
 	@FXML Menu principal_menu;
 	
 	@FXML public void initialize() throws Exception {
-		principal_anchorPane.getChildren().clear();
+		central_anchorPane.getChildren().clear();
 		label_inicial = new QuadroPrincipalView().setLabelInicial();
-		principal_anchorPane.setBottomAnchor(label_inicial, 100.0);
-		principal_anchorPane.setTopAnchor(label_inicial, 0.0);
-		principal_anchorPane.setLeftAnchor(label_inicial, 130.0);
-		principal_anchorPane.setRightAnchor(label_inicial, 100.0);
-		principal_anchorPane.getChildren().add(label_inicial);
+		central_anchorPane.setBottomAnchor(label_inicial, 100.0);
+		central_anchorPane.setTopAnchor(label_inicial, 0.0);
+		central_anchorPane.setLeftAnchor(label_inicial, 130.0);
+		central_anchorPane.setRightAnchor(label_inicial, 100.0);
+		central_anchorPane.getChildren().add(label_inicial);
 		
 	}
 	
@@ -61,6 +61,7 @@ public class QuadroPrincipalController {
 		principal_anchorPane.setRightAnchor(principal_menuBar, 0.0);
 		principal_anchorPane.setTopAnchor(principal_menuBar, 0.0);
 		principal_anchorPane.getChildren().add(principal_menuBar);
+		principal_anchorPane.getChildren().add(central_anchorPane);
 		
 
 		
@@ -83,18 +84,20 @@ public class QuadroPrincipalController {
 		principal_anchorPane.setRightAnchor(principal_menuBar, 0.0);
 		principal_anchorPane.setTopAnchor(principal_menuBar, 0.0);
 		principal_anchorPane.getChildren().add(principal_menuBar);
+		principal_anchorPane.getChildren().add(central_anchorPane);
+
 		
 		
 		
 		incluirFornecedor.setOnAction(ActionEvent -> {
 			try {
-				principal_anchorPane.getChildren().clear();
+				central_anchorPane.getChildren().clear();
 				Parent formulario = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorIncluir.fxml"));
-				principal_anchorPane.setTopAnchor(formulario, 20.0);
-				principal_anchorPane.setBottomAnchor(formulario, 0.0);
-				principal_anchorPane.setLeftAnchor(formulario, 0.0);
-				principal_anchorPane.setRightAnchor(formulario, 0.0);
-				principal_anchorPane.getChildren().add(formulario);
+				central_anchorPane.setTopAnchor(formulario, 0.0);
+				central_anchorPane.setBottomAnchor(formulario, 0.0);
+				central_anchorPane.setLeftAnchor(formulario, 0.0);
+				central_anchorPane.setRightAnchor(formulario, 0.0);
+				central_anchorPane.getChildren().add(formulario);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -102,12 +105,13 @@ public class QuadroPrincipalController {
 		
 		gerenciarFornecedor.setOnAction(ActionEvent -> {
 			try {
+				central_anchorPane.getChildren().clear();
 				Parent lista = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorGerenciar.fxml"));
-				principal_anchorPane.setTopAnchor(lista, 20.0);
-				principal_anchorPane.setBottomAnchor(lista, 0.0);
-				principal_anchorPane.setLeftAnchor(lista, 0.0);
-				principal_anchorPane.setRightAnchor(lista, 0.0);
-				principal_anchorPane.getChildren().add(lista);
+				central_anchorPane.setTopAnchor(lista, 20.0);
+				central_anchorPane.setBottomAnchor(lista, 0.0);
+				central_anchorPane.setLeftAnchor(lista, 0.0);
+				central_anchorPane.setRightAnchor(lista, 0.0);
+				central_anchorPane.getChildren().add(lista);
 			} catch (IOException e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -158,6 +162,7 @@ public class QuadroPrincipalController {
 	
 	private void limparTelaInicial() {
 		principal_anchorPane.getChildren().clear();
+		central_anchorPane.getChildren().clear();
 		principal_menuBar.getMenus().clear();
 	}
 

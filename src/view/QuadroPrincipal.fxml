@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuadroPrincipalController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuadroPrincipalController">
    <left>
       <VBox prefHeight="304.0" prefWidth="130.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +27,7 @@
                   <Insets left="15.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="botao_principal_usuarios" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="57.0" prefWidth="100.0" text="Usuários" textAlignment="CENTER" onAction="#clickUsuario">
+            <Button fx:id="botao_principal_usuarios" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#clickUsuario" prefHeight="57.0" prefWidth="100.0" text="Usuários" textAlignment="CENTER">
                <padding>
                   <Insets bottom="20.0" left="5.0" right="5.0" top="20.0" />
                </padding>
@@ -39,17 +39,20 @@
       </VBox>
    </left>
    <right>
-      <AnchorPane prefWidth="70.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="530.0" prefWidth="70.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="botao_principal_logout" layoutX="9.0" layoutY="360.0" mnemonicParsing="false" onAction="#clickLogout" text="Logout" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
          </children>
+         <BorderPane.margin>
+            <Insets top="25.0" />
+         </BorderPane.margin>
       </AnchorPane>
    </right>
    <center>
       <AnchorPane fx:id="principal_anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar fx:id="principal_menuBar" layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="335.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <!-- AnchorPane fx:id="central_anchorPane" layoutX="100.0" layoutY="39.0" prefHeight="462.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" /-->
+            <MenuBar fx:id="principal_menuBar" layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="335.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-70.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="central_anchorPane" layoutX="200.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
          </children></AnchorPane>
    </center>
 </BorderPane>
