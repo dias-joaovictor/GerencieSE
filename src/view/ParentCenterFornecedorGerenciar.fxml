@@ -24,7 +24,7 @@
             <TableView fx:id="tableView_fornecedor_gerenciar_tableView" prefHeight="345.0" prefWidth="437.0">
               <columns>
                 <TableColumn fx:id="tableColumn_fornecedor_gerenciar_razaoSocial" prefWidth="258.0" text="Razão Social" />
-                <TableColumn fx:id="tableColumn_fornecedor_gerenciar_representante" minWidth="0.0" prefWidth="178.0" text="Representante" />
+                <!-- TableColumn fx:id="tableColumn_fornecedor_gerenciar_representante" minWidth="0.0" prefWidth="178.0" text="Representante" /-->
               </columns>
             </TableView>
          </content>

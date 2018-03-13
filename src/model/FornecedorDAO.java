@@ -47,9 +47,10 @@ public class FornecedorDAO {
 
 	public ResultSet buscaFornecedores(Connection conn, String textoBusca) throws SQLException {
 		String sql = "select * from Fornecedores where RazaoSocial like ?";
-
+			
+		System.out.println(textoBusca);
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, "'%" + textoBusca + "%'");
+			ps.setString(1, "%" + textoBusca + "%");
 			ResultSet rs = ps.executeQuery();
 			return rs;
 	}
