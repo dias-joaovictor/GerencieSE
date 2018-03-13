@@ -33,14 +33,14 @@ public class ParentCenterFornecedorGerenciarController {
 		ResultSet rs = new FornecedorDAO().buscaFornecedores(conn, textoBusca);
 		
 		
-		while(rs.next()) {
-			tableColumn_fornecedor_gerenciar_razaoSocial.setCellValueFactory(cellData -> cellDat
-		}
-		rs.close();
-		conn.close();
-		
-		tableView_fornecedor_gerenciar_tableView.getColumns().addAll(tableColumn_fornecedor_gerenciar_razaoSocial, tableColumn_fornecedor_gerenciar_representante);
-		
+//		while(rs.next()) {
+//			tableColumn_fornecedor_gerenciar_razaoSocial.setCellValueFactory(cellData -> cellDat
+//		}
+//		rs.close();
+//		conn.close();
+//		
+//		tableView_fornecedor_gerenciar_tableView.getColumns().addAll(tableColumn_fornecedor_gerenciar_razaoSocial, tableColumn_fornecedor_gerenciar_representante);
+//		
 	}
 	
 }
