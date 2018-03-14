@@ -16,7 +16,11 @@ public class DataBase {
 		//cpds.setUser("root");
 		//cpds.setPassword("root");
 		
+		//Acesso Remoto
 		cpds.setJdbcUrl("jdbc:mysql://estoquedb.servebbs.com:3306/estoquedb");
+		
+		//Acesso Rede Local
+		//cpds.setJdbcUrl("jdbc:mysql://192.168.15.16:3306/estoquedb");
 		cpds.setUser("rootdb");
 		cpds.setPassword("connection.root");
 		cpds.setMinPoolSize(1);

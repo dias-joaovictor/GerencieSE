@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 
 public class FornecedorDAO {
@@ -45,13 +48,42 @@ public class FornecedorDAO {
 		
 	}
 
+
 	public ResultSet buscaFornecedores(Connection conn, String textoBusca) throws SQLException {
 		String sql = "select * from Fornecedores where RazaoSocial like ?";
 			
-		System.out.println(textoBusca);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "%" + textoBusca + "%");
 			ResultSet rs = ps.executeQuery();
 			return rs;
 	}
+	
+	public ObservableList<Fornecedor> listarFornecedores(Connection conn, String textoBusca) throws SQLException {
+		ObservableList<Fornecedor> lista = FXCollections.observableArrayList();
+		String sql = "select * from Fornecedores where RazaoSocial like ?";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + textoBusca + "%");
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setId(rs.getInt(1));
+				fornecedor.setRazaoSocial(rs.getString(2));
+				fornecedor.setCnpj(rs.getString(3));
+				fornecedor.setRepresentante(rs.getString(4));
+				fornecedor.setEmail(rs.getString(5));
+				fornecedor.setTelefone(rs.getString(6));
+				fornecedor.setRamal(rs.getString(7));
+				fornecedor.setEndereco(rs.getString(8));
+				fornecedor.setBairro(rs.getString(9));
+				fornecedor.setCidade(rs.getString(10));
+				fornecedor.setEstado(rs.getString(11));
+				fornecedor.setPais(rs.getString(12));
+				
+				lista.add(fornecedor);
+			}
+			return lista;
+	}
+	
 }

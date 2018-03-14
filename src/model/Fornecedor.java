@@ -14,6 +14,7 @@ public class Fornecedor {
 	private String cidade;
 	private String estado;
 	private String pais;
+	
 	public int getId() {
 		return id;
 	}
@@ -87,5 +88,9 @@ public class Fornecedor {
 		this.pais = pais;
 	}
 	
+	@Override
+	public String toString() {
+		return id + razaoSocial;
+	}
 
 }
