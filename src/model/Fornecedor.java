@@ -15,6 +15,36 @@ public class Fornecedor {
 	private String estado;
 	private String pais;
 	
+	public Fornecedor(
+		int id,
+		String razaoSocial,
+		String cnpj,
+		String representante,
+		String telefone,
+		String ramal,
+		String email,
+		String endereco,
+		String bairro,
+		String cidade,
+		String estado,
+		String pais) {
+		
+		this.id = id;
+		this.razaoSocial = razaoSocial;
+		this.cnpj = cnpj;
+		this.representante = representante;
+		this.telefone = telefone;
+		this.ramal = ramal;
+		this.email = email;
+		this.endereco = endereco;
+		this.bairro = bairro;
+		this.estado = estado;
+		this.pais = pais;
+	}
+	
+	public Fornecedor() {
+	}
+	
 	public int getId() {
 		return id;
 	}

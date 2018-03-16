@@ -1,11 +1,7 @@
 package controller;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 
-import org.omg.CORBA.INITIALIZE;
-
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,7 +46,7 @@ public class ParentCenterFornecedorGerenciarController {
 		tableColumn_fornecedor_gerenciar_id = new TableColumn<>("ID");
 		tableColumn_fornecedor_gerenciar_id.setCellValueFactory(new PropertyValueFactory("id"));
 		
-		tableColumn_fornecedor_gerenciar_razaoSocial = new TableColumn<>("Razão Social");
+		tableColumn_fornecedor_gerenciar_razaoSocial = new TableColumn<>("Razï¿½o Social");
 		tableColumn_fornecedor_gerenciar_razaoSocial.setCellValueFactory(new PropertyValueFactory("razaoSocial"));
 		
 		tableColumn_fornecedor_gerenciar_representante = new TableColumn<>("Representante");
@@ -59,6 +55,24 @@ public class ParentCenterFornecedorGerenciarController {
 		tableView_fornecedor_gerenciar_tableView.getColumns().addAll(tableColumn_fornecedor_gerenciar_id,
 				tableColumn_fornecedor_gerenciar_razaoSocial, tableColumn_fornecedor_gerenciar_representante);
 		
+		botao_fornecedor_gerenciar_editar.setOnMouseClicked(ActionEvent -> {
+			Fornecedor fornecedor = new Fornecedor(
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getId(), 
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRazaoSocial(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getCnpj(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRepresentante(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getTelefone(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRamal(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEmail(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEndereco(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getBairro(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getCidade(), 
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEstado(),
+					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getPais());
+			
+			System.out.println(fornecedor);
+			
+		});
 		
 
 	}
