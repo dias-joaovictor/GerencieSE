@@ -5,6 +5,9 @@ import java.sql.Connection;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
@@ -12,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.DataBase;
 import model.Fornecedor;
 import model.FornecedorDAO;
@@ -70,7 +74,21 @@ public class ParentCenterFornecedorGerenciarController {
 					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEstado(),
 					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getPais());
 			
-			System.out.println(fornecedor);
+			try {
+				ParentCenterFornecedorEditarController telaEditar = new ParentCenterFornecedorEditarController();
+				telaEditar.recebeFornecedor(fornecedor);
+				Stage stageEditar = new Stage();
+				Parent parent = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorEditar.fxml"));
+				Scene cenaEditar = new Scene(parent, 800, 600);
+				stageEditar.setScene(cenaEditar);
+				stageEditar.setResizable(false);
+				stageEditar.show();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//System.out.println(fornecedor);
 			
 		});
 		
