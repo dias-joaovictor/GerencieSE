@@ -4,7 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import model.DataBase;
 import model.Fornecedor;
+import model.FornecedorDAO;
+
+import java.sql.Connection;
+
+import javafx.event.ActionEvent;
 
 public class ParentCenterFornecedorEditarController {
 
@@ -20,23 +26,56 @@ public class ParentCenterFornecedorEditarController {
 	@FXML TextField campo_fornecedor_Representante;
 	@FXML TextField campo_fornecedor_email;
 	@FXML Button botao_fornecedor_alterar;
-	Fornecedor fornecedor;
+	@FXML Button bota_fornecedor_cancelar;
+	private Fornecedor fornecedor;
+	
 
-	@FXML public void initialize() {
-//		System.out.println(fornecedor.getRazaoSocial());
-//		campo_fornecedor_razaoSocial.setText(a);
-//			campo_fornecedor_telefone.setText(fornecedor.getTelefone());
-//			campo_fornecedor_ramal.setText(fornecedor.getRamal());
-//			campo_fornecedor_endereco.setText(fornecedor.getEndereco());
-//			campo_fornecedor_cidade.setText(fornecedor.getCidade());
-	}
-	public void recebeFornecedor(Fornecedor fornecedor){
-		
+	
+	public void carregaFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		String a = fornecedor.getBairro();
-		
+		campo_fornecedor_razaoSocial.setText(fornecedor.getRazaoSocial());
 		campo_fornecedor_cnpj.setText(fornecedor.getCnpj());
-		
+		campo_fornecedor_telefone.setText(fornecedor.getTelefone());
+		campo_fornecedor_ramal.setText(fornecedor.getRamal());
+		campo_fornecedor_endereco.setText(fornecedor.getEndereco());
+		campo_fornecedor_bairro.setText(fornecedor.getBairro());
+		campo_fornecedor_cidade.setText(fornecedor.getCidade());
+		comboBox_fornecedor_estado.getSelectionModel().select(fornecedor.getEstado());
+		comboBox_fornecedor_pais.getSelectionModel().select(fornecedor.getPais());
+		campo_fornecedor_Representante.setText(fornecedor.getRepresentante());
+		campo_fornecedor_email.setText(fornecedor.getEmail());
 	}
+
+
+
+	@FXML public void clickAlterar(ActionEvent event)  {
+		fornecedor.setCnpj(campo_fornecedor_cnpj.getText());
+		fornecedor.setRazaoSocial(campo_fornecedor_razaoSocial.getText());
+		fornecedor.setTelefone(campo_fornecedor_telefone.getText());
+		fornecedor.setRamal(campo_fornecedor_ramal.getText());
+		fornecedor.setEndereco(campo_fornecedor_endereco.getText());
+		fornecedor.setBairro(campo_fornecedor_bairro.getText());
+		fornecedor.setCidade(campo_fornecedor_cidade.getText());
+		fornecedor.setEstado(comboBox_fornecedor_estado.getValue().toString());
+		fornecedor.setPais(comboBox_fornecedor_pais.getValue().toString());
+		fornecedor.setRepresentante(campo_fornecedor_Representante.getText());
+		fornecedor.setEmail(campo_fornecedor_email.getText());
+
+		try {
+			Connection conn = new DataBase().getConnection();
+			new FornecedorDAO().alterarFornecedor(conn, fornecedor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+
+	@FXML public void clickCancelar(ActionEvent event) {}
+	
+	
+
+	 
 	 
 }

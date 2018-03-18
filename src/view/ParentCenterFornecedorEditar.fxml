@@ -36,6 +36,7 @@
       <TextField fx:id="campo_fornecedor_Representante" layoutX="35.0" layoutY="313.0" prefHeight="26.0" prefWidth="244.0" />
       <Label layoutX="321.0" layoutY="297.0" text="E-mail" />
       <TextField fx:id="campo_fornecedor_email" layoutX="321.0" layoutY="313.0" prefHeight="26.0" prefWidth="244.0" />
-      <Button fx:id="botao_fornecedor_alterar" layoutX="283.0" layoutY="352.0" mnemonicParsing="false" text="Alterar" />
+      <Button fx:id="botao_fornecedor_alterar" layoutX="283.0" layoutY="352.0" mnemonicParsing="false" text="Alterar" onAction="#clickAlterar" />
+      <Button fx:id="bota_fornecedor_cancelar" layoutX="200.0" layoutY="352.0" mnemonicParsing="false" text="Cancelar" onAction="#clickCancelar" />
    </children>
 </AnchorPane>

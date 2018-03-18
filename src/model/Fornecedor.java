@@ -40,6 +40,7 @@ public class Fornecedor {
 		this.bairro = bairro;
 		this.estado = estado;
 		this.pais = pais;
+		this.cidade = cidade;
 	}
 	
 	public Fornecedor() {
@@ -120,7 +121,7 @@ public class Fornecedor {
 	
 	@Override
 	public String toString() {
-		return id + razaoSocial;
+		return id + "----"+ razaoSocial;
 	}
 
 }

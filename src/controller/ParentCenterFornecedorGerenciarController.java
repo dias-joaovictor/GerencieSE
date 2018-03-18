@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 
 import javafx.collections.ObservableList;
@@ -74,21 +75,27 @@ public class ParentCenterFornecedorGerenciarController {
 					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEstado(),
 					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getPais());
 			
-			try {
-				ParentCenterFornecedorEditarController telaEditar = new ParentCenterFornecedorEditarController();
-				telaEditar.recebeFornecedor(fornecedor);
+
+
 				Stage stageEditar = new Stage();
-				Parent parent = FXMLLoader.load(getClass().getResource("../view/ParentCenterFornecedorEditar.fxml"));
-				Scene cenaEditar = new Scene(parent, 800, 600);
-				stageEditar.setScene(cenaEditar);
-				stageEditar.setResizable(false);
-				stageEditar.show();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(ParentCenterFornecedorGerenciarController.class.getResource("../view/ParentCenterFornecedorEditar.fxml"));
+				Parent parent;
+				try {
+					parent = loader.load();
+					ParentCenterFornecedorEditarController telaEditar = loader.getController();
+					telaEditar.carregaFornecedor(fornecedor);
+					Scene cenaEditar = new Scene(parent, 800, 600);
+					stageEditar.setScene(cenaEditar);
+					stageEditar.setResizable(false);
+					stageEditar.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			
-			//System.out.println(fornecedor);
+			
 			
 		});
 		

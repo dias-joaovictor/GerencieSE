@@ -85,5 +85,27 @@ public class FornecedorDAO {
 			}
 			return lista;
 	}
+
+	public void alterarFornecedor(Connection conn, Fornecedor fornecedor) throws SQLException {
+
+		String sql = "update Fornecedores set RazaoSocial = ?, CNPJ = ?, Representante = ?, Email = ?, Telefone = ?, Ramal = ?, Endereco = ?, Bairro = ?, Cidade = ?, Estado = ?, Pais = ? where IDFornecedor = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, fornecedor.getRazaoSocial());
+		ps.setString(2, fornecedor.getCnpj());
+		ps.setString(3, fornecedor.getRepresentante());
+		ps.setString(4, fornecedor.getEmail());
+		ps.setString(5, fornecedor.getTelefone());
+		ps.setString(6, fornecedor.getRamal());
+		ps.setString(7, fornecedor.getEndereco());
+		ps.setString(8, fornecedor.getBairro());
+		ps.setString(9, fornecedor.getCidade());
+		ps.setString(10, fornecedor.getEstado());
+		ps.setString(11, fornecedor.getPais());
+		ps.setInt(12, fornecedor.getId());
+		ps.executeUpdate();
+		ps.close();
+	}
+	
+	
 	
 }
