@@ -1,16 +1,17 @@
 package controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import model.DataBase;
-import model.Fornecedor;
-import model.FornecedorDAO;
-
 import java.sql.Connection;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.DataBase;
+import model.Fornecedor;
+import model.FornecedorDAO;
 
 public class ParentCenterFornecedorEditarController {
 
@@ -29,6 +30,9 @@ public class ParentCenterFornecedorEditarController {
 	@FXML Button bota_fornecedor_cancelar;
 	private Fornecedor fornecedor;
 	
+//	@FXML private void initialize() throws Exception {
+//		campo_fornecedor_razaoSocial.setDisable(value);
+//	}
 
 	
 	public void carregaFornecedor(Fornecedor fornecedor) {
@@ -72,7 +76,10 @@ public class ParentCenterFornecedorEditarController {
 
 
 
-	@FXML public void clickCancelar(ActionEvent event) {}
+	@FXML public void clickCancelar(ActionEvent event) {
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.close();
+	}
 	
 	
 

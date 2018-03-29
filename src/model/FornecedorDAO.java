@@ -105,6 +105,16 @@ public class FornecedorDAO {
 		ps.executeUpdate();
 		ps.close();
 	}
+
+	public void excluirFornecedor(Connection conn, int idPessoa) throws SQLException {
+		String sql = "delete from Fornecedores where IDFornecedor = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, idPessoa);
+		ps.executeUpdate();
+		ps.close();
+		conn.close();
+		
+	}
 	
 	
 	

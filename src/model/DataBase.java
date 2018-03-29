@@ -9,7 +9,7 @@ public class DataBase {
 //		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/estoquedb","root", "root");
 //		return conn;
 		
-		//Pool de conexões usando C3PO
+		//Pool de conexï¿½es usando C3PO
 		ComboPooledDataSource cpds = new ComboPooledDataSource();
 		//cpds.setDriverClass("com.mysql.jdbc.Driver");
 		
@@ -18,10 +18,10 @@ public class DataBase {
 		//cpds.setPassword("root");
 		
 		//Acesso Remoto
-		//cpds.setJdbcUrl("jdbc:mysql://estoquedb.servebbs.com:3306/estoquedb");
+		cpds.setJdbcUrl("jdbc:mysql://estoquedb.servebbs.com:3306/estoquedb");
 		
 		//Acesso Rede Local
-		cpds.setJdbcUrl("jdbc:mysql://192.168.15.16:3306/estoquedb");
+		//cpds.setJdbcUrl("jdbc:mysql://192.168.15.16:3306/estoquedb");
 		cpds.setUser("rootdb");
 		cpds.setPassword("connection.root");
 		cpds.setMinPoolSize(1);

@@ -60,46 +60,81 @@ public class ParentCenterFornecedorGerenciarController {
 		tableView_fornecedor_gerenciar_tableView.getColumns().addAll(tableColumn_fornecedor_gerenciar_id,
 				tableColumn_fornecedor_gerenciar_razaoSocial, tableColumn_fornecedor_gerenciar_representante);
 		
-		botao_fornecedor_gerenciar_editar.setOnMouseClicked(ActionEvent -> {
-			Fornecedor fornecedor = new Fornecedor(
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getId(), 
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRazaoSocial(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getCnpj(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRepresentante(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getTelefone(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRamal(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEmail(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEndereco(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getBairro(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getCidade(), 
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEstado(),
-					tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getPais());
-			
-
-
-				Stage stageEditar = new Stage();
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(ParentCenterFornecedorGerenciarController.class.getResource("../view/ParentCenterFornecedorEditar.fxml"));
-				Parent parent;
-				try {
-					parent = loader.load();
-					ParentCenterFornecedorEditarController telaEditar = loader.getController();
-					telaEditar.carregaFornecedor(fornecedor);
-					Scene cenaEditar = new Scene(parent, 800, 600);
-					stageEditar.setScene(cenaEditar);
-					stageEditar.setResizable(false);
-					stageEditar.show();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			
-			
-			
-		});
 		
-
 	}
 	
+
+
+	@FXML public void clickExcluir(ActionEvent event) throws Exception {
+		int idPessoa = tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getId();
+		System.out.println(idPessoa);
+		Connection conn = new DataBase().getConnection();
+		new FornecedorDAO().excluirFornecedor(conn, idPessoa);
+		clickBuscar(new ActionEvent());
+		
+	}
+	
+
+
+	@FXML public void clickVer(ActionEvent event) {
+		Fornecedor fornecedor = toFornecedor();			
+		Stage stageEditar = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ParentCenterFornecedorGerenciarController.class.getResource("../view/ParentCenterFornecedorVisualizar.fxml"));
+		Parent parent;
+		try {
+			parent = loader.load();
+			ParentCenterFornecedorEditarController telaVisualizar = loader.getController();
+			telaVisualizar.carregaFornecedor(fornecedor);
+			Scene cenaEditar = new Scene(parent, 800, 600);
+			stageEditar.setScene(cenaEditar);
+			stageEditar.setResizable(false);
+			stageEditar.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	@FXML public void clickEditar(ActionEvent event) {
+		
+			Fornecedor fornecedor = toFornecedor();			
+			Stage stageEditar = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(ParentCenterFornecedorGerenciarController.class.getResource("../view/ParentCenterFornecedorEditar.fxml"));
+			Parent parent;
+			try {
+				parent = loader.load();
+				ParentCenterFornecedorEditarController telaEditar = loader.getController();
+				telaEditar.carregaFornecedor(fornecedor);
+				Scene cenaEditar = new Scene(parent, 800, 600);
+				stageEditar.setScene(cenaEditar);
+				stageEditar.setResizable(false);
+				stageEditar.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+	
+	private Fornecedor toFornecedor(){
+		
+		Fornecedor fornecedor = new Fornecedor(
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getId(), 
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRazaoSocial(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getCnpj(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRepresentante(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getTelefone(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getRamal(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEmail(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEndereco(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getBairro(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getCidade(), 
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getEstado(),
+				tableView_fornecedor_gerenciar_tableView.getSelectionModel().getSelectedItem().getPais());
+		
+		return fornecedor;
+	}
 }
